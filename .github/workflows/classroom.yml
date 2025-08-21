@@ -1,16 +1,17 @@
-name: GitHub Classroom Workflow
-
-on: [push]
-
-permissions:
-  checks: write
-  actions: read
-  contents: read
+name: Classroom Autograding
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  build:
-    name: Autograding
+  autograding:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: education/autograding@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - name: Run Classroom Autograding
+        uses: education/autograding@v1
