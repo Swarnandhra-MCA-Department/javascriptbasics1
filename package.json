@@ -1,8 +1,16 @@
+
+## `package.json`
+```json
 {
-  "name": "simple-js-assignment",
+  "name": "js-basics-assignment",
   "version": "1.0.0",
-  "description": "Simple JavaScript Assignment with Autograding",
+  "private": true,
   "scripts": {
-    "test": "node test.js"
+    "check": "node __tests__/functions.test.js",
+    "test": "node __tests__/functions.test.js && node __tests__/io.test.js",
+    "start": "node src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
